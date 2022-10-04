@@ -17,6 +17,7 @@ registerButton.onclick = () => {
         url:"/api/account/register",
         contentType:"application/json",
         data: JSON.stringify(registerInfo),
+//     JSON.stringify :  obj-> json 으로 바꿔줌
         dataType: "json",
         success:(response) => {
 
