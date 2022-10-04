@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@300&display=swap');
 
 
@@ -6,12 +7,64 @@
 
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 11px;
+    letter-spacing: 1px;
 
 }
 
 body, html{
     margin: 0px;
-    height: 100%;
+
+}
+
+input{
+    margin-bottom: 15px;
+    border: 1px solid rgb(198, 198, 198);
+    padding: 10px;
+
+    width: 100%;
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid black;
+}
+
+@keyframes button-fadein{
+    form{
+        background-color: white;
+
+    }
+    to{
+        background-color: black;
+        text-decoration: underline;
+
+    }
+}
+@keyframes button-fadeout{
+    form{
+        background-color: black;
+    }
+    to{
+        background-color: white;
+    }
+}
+@keyframes black-button-fadein{
+    form{
+        background-color: black;
+    }
+    to{
+        background-color: rgb(100, 100, 100);
+        text-decoration: underline;
+    }
+}
+@keyframes black-button-fadeout{
+    form{
+        background-color: rgb(100, 100, 100);
+    }
+    to{
+        background-color: black;
+
+    }
 }
 
 button{
@@ -23,8 +76,25 @@ button{
     font-weight: 700;
     color: black;
     background-color: white;
+    animation: button-fadeout 0.1s linear forwards;
 
     cursor: pointer;
+}
+
+
+button:active{
+    animation: button-fadein 0.1s linear forwards;
+
+}
+
+.black-button{
+    color: white;
+    background-color: black;
+    animation: black-button-fadeout 0.1s linear forwards;
+}
+
+.black-button:active{
+    animation: black-button-fadein 0.1s linear forwards;
 }
 
 a{
