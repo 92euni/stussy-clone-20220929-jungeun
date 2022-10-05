@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AccountPageController {
 
     @GetMapping("/login")
-    public String login() {
+    public String login(){
+//        try { Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//           throw new RuntimeException(e);
+//        }
+
         return "account/login";
+
     }
 
     @GetMapping("/register")
