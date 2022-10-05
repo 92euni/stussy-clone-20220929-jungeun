@@ -1,4 +1,4 @@
-package com.stussy.stussyclone20220929jungeun.Controller;
+package com.stussy.stussyclone20220929jungeun.controller;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
