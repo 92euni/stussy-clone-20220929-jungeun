@@ -5,7 +5,7 @@
 <mapper namespace="com.stussy.stussyclone20220929jungeun.repository.AccountRepository">
    <resultMap id="role" type="com.stussy.stussyclone20220929jungeun.domain.Role">
        <result property="id" column="id"></result>
-       <result property="role" column="rold"></result>
+       <result property="role" column="role"></result>
        <result property="role_name" column="role_name"></result>
    </resultMap>
 
@@ -20,13 +20,13 @@
         <result property="role_id" column="role_id"></result>
         <result property="create_date" column="create_date"></result>
         <result property="update_date" column="update_date"></result>
-        <collection property="role" resultMap = "role"></collection>
+        <collection property="role" resultMap="role"></collection>
    </resultMap>
 
     <insert id="save" parameterType="com.stussy.stussyclone20220929jungeun.domain.User">
         insert into
             user_mst
-        values
+        values(
             0,
             #{username},
             #{oauth_username},
@@ -37,7 +37,7 @@
             #{role_id},
             now(),
             now()
-
+        )
     </insert>
 
     <select id="findUserByEmail" parameterType="String" resultMap="user">
