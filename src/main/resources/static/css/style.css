@@ -16,7 +16,7 @@ body, html{
 
 }
 
-input{
+input, select, textarea{
     margin-bottom: 15px;
     border: 1px solid rgb(198, 198, 198);
     padding: 10px;
@@ -24,7 +24,7 @@ input{
     width: 100%;
 }
 
-input:focus{
+input:focus, select:focus, textarea:focus{
     outline: none;
     border: 1px solid black;
 }
@@ -101,6 +101,7 @@ a{
     text-decoration: none;
     color: black;
 }
+
 a:hover{
     font-weight: 700;
     text-decoration: underline;
@@ -110,4 +111,7 @@ ul{
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+main{
+    margin-top: 60px;
 }
