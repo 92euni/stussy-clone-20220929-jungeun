@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/aside.css">
     <link rel="stylesheet" href="/static/css/admin.css">
-    
-    
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
     <div id="container">
@@ -37,7 +36,7 @@
             </div>
             <nav class="nav-invisible">
                 <div class="site-nav-mega">
-                    <a href="/collections/new_arrivals" class="site-nav-child-link">NEW</a>
+                    <a href="/collections/new-arrivals" class="site-nav-child-link">NEW</a>
                     <a href="/collections/denim" class="site-nav-child-link">DENIM</a>
                     <a href="/collections/tees" class="site-nav-child-link">TEES</a>
                     <a href="/collections/sweats" class="site-nav-child-link">SWEATS</a>
@@ -56,8 +55,6 @@
                     <a href="/pages/customer-support" class="site-nav-child-link">CONTACT</a>
                     <a href="/blogs/features" class="site-nav-child-link">FEATURES</a>
                     <a href="/blogs/chapters" class="site-nav-child-link">CHAPTERS</a>
-
-      
                 </div>
             </nav>
             <script src="/static/js/header.js"></script>
@@ -67,93 +64,72 @@
                 <h1 class="admin-title">ADMIN PRODUCT ADD</h1>
                 <div class="admin-container">
                     <aside class="admin-menus">
-                       <ul>
+                        <ul>
                             <li><a href="/admin/product/list">상품 조회</a></li>
                             <li><a href="/admin/product/addition">상품 등록</a></li>
                             <li><a href="/admin/product/modification">상품 수정</a></li>
                             <li><a href="/logout">로그아웃</a></li>
-                       </ul>
+                        </ul>
                     </aside>
                     <section class="admin-main">
-                        
-                            <select class="product_input">
-                                <option value="none" selected>상품 종류</option>
-                                <option value="TEES">TEES</option>
-                                <option value="SWEATS">SWEATS</option>
-                                <option value="OVERDYED">OVERDYED</option>
-                                <option value="TOPS_SHIRTS">TOPS_SHIRTS</option>
-                                <option value="KNITS">KNITS</option>
-                                <option value="BOTTOMS">BOTTOMS</option>
-                                <option value="DENIM">DENIM</option>
-                                <option value="HEADWEAR">HEADWEAR</option>
-                                <option value="ACCESSORIES">ACCESSORIES</option>
+                        <select class="product-input">
+                            <option value="none" selected>상품 종류</option>
+                            <option value="TEES">TEES</option>
+                            <option value="SWEATS">SWEATS</option>
+                            <option value="OVERDYED">OVERDYED</option>
+                            <option value="TOPS_SHIRTS">TOPS & SHIRTS</option>
+                            <option value="KNITS">KNITS</option>
+                            <option value="BOTTOMS">BOTTOMS</option>
+                            <option value="DENIM">DENIM</option>
+                            <option value="HEADWEAR">HEADWEAR</option>
+                            <option value="ACCESSORIES">ACCESSORIES</option>
 
-                            </select>
-                            <input type="text" class="product-input" placeholder="상품명을 입력하세요">
-                            <input type="text" class="product-input" placeholder="가격을 입력하세요">
-
-                            <div class="product-option">
-                                <div class="option-half">
-                                    <select class="product_input">
-                                        <option value="none" selected>색상 선택</option>
-                                        <option value="black">black</option>
-                                        <option value="red">red</option>
-                                        <option value="blue">blue</option>
-                                        <option value="green">green</option>
-                                    </select>
-                                </div>
-                                <div class="option-half">
-                                    <select class="product-input">
-                                        <option value="none" selected>사이즈 선택</option>
-                                        <option value="S">S</option>
-                                        <option value="M">M</option>
-                                        <option value="L">L</option>
-                                        <option value="XL">XL</option>
-                                        <option value="XXL">XXL</option>
-                                    </select>
-                                </div>
+                        </select>
+                        <input type="text" class="product-input" placeholder="상품명을 입력하세요">
+                        <input type="text" class="product-input" placeholder="가격을 입력하세요">
+                        <div class="product-option">
+                            <div class="option-half">
+                                <select class="product-input">
+                                    <option value="none" selected>색상 선택</option>
+                                    <option value="black">black</option>
+                                    <option value="red">red</option>
+                                    <option value="blue">blue</option>
+                                    <option value="green">green</option>
+                                </select>
                             </div>
-                            <textarea class="product-input" placeholder="간략 설명"></textarea>
-                            <textarea class="product-input" placeholder="상세 설명"></textarea>
-                            <textarea class="product-input" placeholder="기타 설명"></textarea>
-                            <textarea class="product-input" placeholder="관리 방법"></textarea>
-                            <textarea class="product-input" placeholder="배송 설명"></textarea>
-                            <form enctype="multipart/form-data">
-                                <div class="product-img-inputs">
-                                    <label>상품 이미지</label>
-                                    <button type="button" class="add-button">추가</button>
-                                    <input type="file" class="file-input product-invisible" name="file" >
-                                </div>
-                            </form>
-                    
-                            <div class="product-images">
-                                <!-- <div class="img-box">
-                                    <i class="fa-solid fa-xmark"></i>
-                                    <img class="product-img" src="/static/images/product1.png" alt="">
-                                </div>
-                                <div class="img-box">
-                                    <i class="fa-solid fa-xmark"></i>
-                                    <img class="product-img" src="/static/images/product2.png" alt="">
-                                </div>
-                                <div class="img-box">
-                                    <i class="fa-solid fa-xmark"></i>>
-                                    <img class="product-img" src="/static/images/product3.png" alt="">
-                                </div>
-                                <div class="img-box">
-                                    <i class="fa-solid fa-xmark"></i>
-                                    <img class="product-img" src="/static/images/product4.png" alt="">
-                                </div> -->
+                            <div class="option-half">
+                                <select class="product-input">
+                                    <option value="none" selected>사이즈 선택</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                </select>
                             </div>
-                            <button type="button" class="submit-button product-button black-button">등록하기</button>
+                        </div>
+                        <textarea class="product-input" placeholder="간략 설명"></textarea>
+                        <textarea class="product-input" placeholder="상세 설명"></textarea>
+                        <textarea class="product-input" placeholder="기타 설명"></textarea>
+                        <textarea class="product-input" placeholder="관리 방법"></textarea>
+                        <textarea class="product-input" placeholder="배송 설명"></textarea>
+                        <form enctype="multipart/form-data">
+                            <div class="product-img-inputs">
+                                <label>상품 이미지</label>
+                                <button type="button" class="add-button">추가</button>
+                                <input type="file" class="file-input product-invisible" name="file" multiple>
+                            </div>
+                        </form>
+                        <div class="product-images">
+                            
+                        </div>
+                        <button type="button" class="submit-button product-button black-button">등록하기</button>
                     </section>
                 </div>
-
             </div>
         </main>
         <footer>
-
         </footer>
-       
     </div>
     <script src="/static/js/product_add.js"></script>
 </body>

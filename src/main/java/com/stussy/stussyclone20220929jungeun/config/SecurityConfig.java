@@ -30,8 +30,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.httpBasic().disable();
         http.authorizeRequests()    //모든 요청시에 실행을 해라
-                .antMatchers("/admin/**")   //이 페이지로 들어오면 권한 없다
-                .access("hasRole('ADMIN') or hasRole('MANAGER')")//여러개의 권한 적용
+
+                //<<<<<<<<<<<<<<<<Page>>>>>>>>>>>>>>>>>>>>>>>//
+//                .antMatchers("/admin/**")   //이 페이지로 들어오면 권한 없다
+//                .access("hasRole('ADMIN') or hasRole('MANAGER')")//여러개의 권한 적용
 //                .hasRole("ADMIN") //하나의 권한 적용
                 .antMatchers("/account")  //해당 요청 주소들은
                 .access("hasRole('USER') or hasRole('ADMIN') or hasRole('MANAGER')")
