@@ -76,7 +76,7 @@
             </foreach>
     </insert>
 
-    <select id="getProductList" parameterType="java.util.HashMap" resultMap="produxt">
+    <select id="getProductList" parameterType="java.util.HashMap" resultMap="product">
         SELECT
             pm.id,
             pm.category,
