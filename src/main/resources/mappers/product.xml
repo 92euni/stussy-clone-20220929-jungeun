@@ -44,6 +44,7 @@
                         FROM
                             product_mst
                         WHERE NAME = #{name}), ifnull(MAX(group_id), 0) + 1),
+
                 #{name},
                 #{price},
                 #{color},
@@ -58,6 +59,7 @@
             FROM
                 product_mst
         );
+
     </insert>
 
     <insert id="saveImgFiles" parameterType="java.util.List">
@@ -83,9 +85,9 @@
             pm.group_id,
             pm.name,
             pm.price,
-            pm.colorm
+            pm.color,
             pm.size,
-            pm.info_simple.
+            pm.info_simple,
             pm.info_detail,
             pm.info_option,
             pm.info_management,
@@ -102,11 +104,10 @@
                 *
             FROM
                 product_mst
-            where
+
 
             LIMIT #{index}, 10) pm
-            LEFT OUTER JOIN product_img pim ON(pim.product_id = pm.id)
-
+            left outer join product_img pim ON(pim.product_id = pm.id)
     </select>
 
 </mapper>

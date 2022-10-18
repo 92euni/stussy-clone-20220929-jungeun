@@ -13,6 +13,12 @@ public class AdminPageController {
 
     @GetMapping("/product/addition")
     public String loadProductAddition() {
+
         return "admin/product_add";
+    }
+
+    @GetMapping("/products")
+    public String loadProductList(){
+        return "admin/product_list";
     }
 }

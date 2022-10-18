@@ -207,7 +207,7 @@ td:nth-child(4){
     border: none;
 }
 .detail-invisible{
-    /* display: none; */
+    display: none;
 }
 
 .list-button{
