@@ -25,5 +25,7 @@ public class ProductListRespDto {
 
     private List<ProductImgFile> productImgFiles;
 
+    private int productTotalCount;
+
 
 }

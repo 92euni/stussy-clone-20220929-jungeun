@@ -1,4 +1,14 @@
+// <<<<<<<<<<카테고리>>>>>>>>>>>>>>>>>>
+const categorySelectInput = document.querySelector(".category-select .product-input");
+
+// <<<<<<<<<<searchbutton>>>>>>>>>>>>>>>>>>
+const searchInput = document.querySelector(".product-search .product-input");
+const searchButton = document.querySelector(".search-button");
+
+
 let page = 1;
+let category = "ALL";
+let searchText = "";
 
 window.onload = () => {
     getList();
@@ -11,21 +21,111 @@ function getList() {
         type: "get",
         url: "/api/admin/products",
         data: {
-            pageNumber: page,
-            category: "",
-            searchText:""
+            // "키값" : 변수명
+            "pageNumber" : page,
+            "category" : category,
+            "searchText" : searchText
         },
         dataType: "json",
         success: (response) => {
             console.log(response);
-            addProducts(response.data);
-
+            if(response.data.length != 0){
+                loadPageNumberButtons(response.data[0].productTotalCount);
+                addProducts(response.data);
+            }else{
+                alert("등록된 상품이 없습니다.");
+                location.reload();
+            }
+           
         },
         error: (error) => {
             console.log(error);
         }
     });
 }
+//<<<<<<<<<카테고리>>>>>>>>>>>
+categorySelectInput.onchange = () => {
+    page = 1;
+    category = categorySelectInput.value;
+    getList();
+}
+// <<<<<<<<searchbutton>>>>>>>>>>>>>
+searchButton.onclick = () => {
+    page = 1;
+    category = categorySelectInput.value;
+    searchText = searchInput.value;
+    getList();
+}
+//<<<<<<enter로 검색하기>>>>>>
+searchInput.onkeyup = () => {
+    if(window.event.keyCode == 13){
+        searchButton.click();
+    }
+}
+
+
+// <<<<<<<Paging처리>>>>>>>
+function loadPageNumberButtons(productTotalCount){
+    const pageButtons = document.querySelector(".page-buttons")
+
+    pageButtons.innerHTML="";
+
+    //Math.floor : 소수점 이하 버리기
+    let maxPage = (productTotalCount % 10 == 0) ? productTotalCount / 10 : Math.floor(productTotalCount / 10) + 1;
+    let minPage = 1;
+
+    let startIndex = page % 5 == 0 ? page - 4 : page - (page % 5) + 1;
+    let endIndex = startIndex + 4 <= maxPage ? startIndex + 4 : maxPage;
+
+    console.log(`
+    productTotalCount = ${productTotalCount}
+    maxPage = ${maxPage}
+    startIndex = ${startIndex}
+    endIndex = ${endIndex}
+    `);
+
+    //[page 버튼 만들기]
+    if(page !=  1){
+        // 현재페이지가 1페이지가 아닐 때
+        pageButtons.innerHTML = `<a href="javascript:void(0)"><li>&#60;</li></a>`;
+    }
+    for(let i = startIndex; i <= endIndex; i++) {
+        if(i == page){
+            //.a-selected 줘서 현재페이지가 선택되어있음을 확인
+            pageButtons.innerHTML += `<a href="javascript:void(0)" class="a-selected"><li>${i}</li></a>`;
+        }else{
+            pageButtons.innerHTML += `<a href="javascript:void(0)"><li>${i}</li></a>`;
+        }
+        
+    }
+    if(page != maxPage){
+        // 현재페이지가 maxpage가 아닐 때
+        pageButtons.innerHTML += `<a href="javascript:void(0)"><li>&#62;</li></a>`;
+    }
+
+
+    //[Event등록 : <를 누르면 전페이지 >를 누르면 다음페이지 그 나머지는 해당 페이지번호
+    const pageNumbers = pageButtons.querySelectorAll("li")
+
+    for(let i =0; i< pageNumbers.length; i++ ){
+        pageNumbers[i].onclick = () => {
+            let pageNumberText = pageNumbers[i].textContent;
+
+            if(pageNumberText == "<"){
+                --page;
+            }else if(pageNumberText == ">"){
+                ++page;
+            }else{
+                page = pageNumberText;
+            }
+
+        
+            getList();
+       }
+    }
+    
+}
+
 
 function addProducts(productList){
     const listBody = document.querySelector(".list-body");
@@ -121,6 +221,10 @@ function addProducts(productList){
             })
           
             productDetails[index].classList.toggle("detail-invisible");
+
+            
+
+
         }
 
     });

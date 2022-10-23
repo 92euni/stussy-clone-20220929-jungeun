@@ -25,6 +25,7 @@
         <result property="info_shipping" column="info_shipping"></result>
         <result property="create_date" column="create_date"></result>
         <result property="update_date" column="update_date"></result>
+        <result property="product_total_count" column="product_total_count"></result>
         <collection property="product_img_files" javaType="list" resultMap="product_img_files"></collection>
     </resultMap>
 
@@ -98,16 +99,37 @@
             pim.id AS img_id,
             pim.product_id,
             pim.origin_name,
-            pim.temp_name
+            pim.temp_name,
+            pc.product_total_count
         FROM
             (SELECT
                 *
             FROM
                 product_mst
-
+            where
+                1 = 1
+            <if test ='category != "ALL"'>
+                AND category = #{category}
+            </if>
+            <if test ='searchText != null || searchText != "" '>
+                AND name like CONCAT ('%', #{searchText}, '%')
+            </if>
 
             LIMIT #{index}, 10) pm
             left outer join product_img pim ON(pim.product_id = pm.id)
+            left outer join (select
+                                count(*) as product_total_count
+                            from
+                                product_mst
+                            where
+                            1 = 1
+                            <if test ='category != "ALL"'>
+                                AND category = #{category}
+                            </if>
+                            <if test ='searchText != null || searchText != "" '>
+                                AND name like CONCAT ('%', #{searchText}, '%')
+                            </if>
+                            ) pc on(1=1)
     </select>
 
 </mapper>
