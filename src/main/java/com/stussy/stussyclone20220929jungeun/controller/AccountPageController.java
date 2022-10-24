@@ -2,13 +2,14 @@ package com.stussy.stussyclone20220929jungeun.controller;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/account")
-@Configuration
+@Controller
 public class AccountPageController {
 
     @GetMapping("/login")
